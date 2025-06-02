@@ -34,7 +34,7 @@ class NetworkRestModule {
         encodeDefaults = true
     }
 
-    // TODO TODO Ex 1.2 Install ApiKeyPlugin
+    // TODO Ex 1.2 Install ApiKeyPlugin
     @Single
     internal fun httpClient(
         contentNegotiationPlugin: ContentNegotiationPlugin,
