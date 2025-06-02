@@ -3,6 +3,7 @@ package app.futured.kmptemplate.feature.navigation.root
 import app.futured.arkitekt.decompose.ext.asStateFlow
 import app.futured.kmptemplate.feature.navigation.deepLink.DeepLinkDestination
 import app.futured.kmptemplate.feature.navigation.deepLink.DeepLinkResolver
+import app.futured.kmptemplate.feature.navigation.home.HomeNavHostComponentFactory
 import app.futured.kmptemplate.feature.ui.base.AppComponent
 import app.futured.kmptemplate.feature.ui.base.AppComponentContext
 import app.futured.kmptemplate.feature.ui.welcomeScreen.WelcomeComponentFactory
@@ -37,7 +38,14 @@ internal class RootNavHostComponent(@InjectedParam componentContext: AppComponen
                         rootNavigator,
                     ),
                 )
+
                 // TODO Ex 2.3 Add Home
+                is RootConfig.Home -> RootChild.Home(
+                    navHost = HomeNavHostComponentFactory.createComponent(
+                        componentContext = childCtx,
+                        initialStack = config.initialStack,
+                    ),
+                )
             }
         },
     ).asStateFlow()
@@ -53,7 +61,11 @@ internal class RootNavHostComponent(@InjectedParam componentContext: AppComponen
         override fun updateCameraPermission(allowed: Boolean) {
             // TODO Ex 2.4 Navigate base on flag
             rootNavigator.slotNavigator.activate(
-                RootConfig.Intro
+                if (allowed) {
+                    RootConfig.Home()
+                } else {
+                    RootConfig.Intro
+                }
             )
         }
     }

@@ -13,7 +13,7 @@ internal class ApiKeyPlugin : HttpClientPlugin {
                 onRequest { request, content ->
                     val isRestUlr = request.url.toString().startsWith(FlavorConstants.apiUrl)
                     if (isRestUlr) {
-                        // TODO Ex 1.3 Append x-api-key to request header
+                        request.headers.append("x-api-key", FlavorConstants.apiKey)
                     }
                 }
             },

@@ -54,7 +54,6 @@ import app.futured.kmptemplate.android.ui.components.dialog.MDevDialog
 import app.futured.kmptemplate.feature.model.ui.Avatar
 import app.futured.kmptemplate.feature.model.ui.AvatarStatus
 import app.futured.kmptemplate.feature.ui.firstScreen.FirstScreen
-import app.futured.kmptemplate.feature.ui.firstScreen.FirstUiEvent
 import app.futured.kmptemplate.feature.ui.firstScreen.FirstViewState
 import app.futured.kmptemplate.resources.MR
 import app.futured.kmptemplate.resources.kmpStringResource

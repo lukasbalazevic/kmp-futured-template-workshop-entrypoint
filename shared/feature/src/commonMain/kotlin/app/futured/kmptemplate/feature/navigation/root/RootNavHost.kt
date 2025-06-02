@@ -1,5 +1,7 @@
 package app.futured.kmptemplate.feature.navigation.root
 
+import app.futured.kmptemplate.feature.navigation.home.HomeConfig
+import app.futured.kmptemplate.feature.navigation.home.HomeNavHost
 import app.futured.kmptemplate.feature.ui.welcomeScreen.WelcomeScreen
 import com.arkivanov.decompose.router.slot.ChildSlot
 import kotlinx.coroutines.flow.StateFlow
@@ -26,6 +28,13 @@ sealed interface RootConfig {
     @Serializable
     data object Intro : RootConfig
 
+    @Serializable
+    data class Home(
+        // Changing the seed ensures that entire navigation tree is regenerated. Useful for when deep link is opened.
+        private val seed: Long = 0L,
+        val initialStack: List<HomeConfig> = listOf(HomeConfig.First)
+    ) : RootConfig
+
 }
 
 @OptIn(ExperimentalUuidApi::class)
@@ -39,4 +48,6 @@ sealed interface RootChild {
     val iosViewId: String
 
     data class Intro(val screen: WelcomeScreen, override val iosViewId: String = Uuid.random().toString()) : RootChild
+
+    data class Home(val navHost: HomeNavHost, override val iosViewId: String = Uuid.random().toString()) : RootChild
 }

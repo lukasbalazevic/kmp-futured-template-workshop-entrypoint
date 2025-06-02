@@ -15,5 +15,6 @@ internal class RootNavHostNavigator : RootNavHostNavigation {
 
     // TODO Ex 2.5 Activate Home
     override fun WelcomeComponent.navigateToHome() {
+        slotNavigator.activate(RootConfig.Home())
     }
 }

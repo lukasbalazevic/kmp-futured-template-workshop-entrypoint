@@ -85,6 +85,7 @@ buildkonfig {
 
     defaultConfigs {
         buildConfigField(STRING, "apiUrl", ProductFlavors.DEFAULT.restApiUrl)
+        buildConfigField(STRING, "apiKey", ProductFlavors.DEFAULT.apiKey)
         buildConfigField(STRING, "ktorUserAgentVersion", libs.versions.ktor.get())
     }
 
@@ -94,6 +95,7 @@ buildkonfig {
     ).forEach {
         defaultConfigs(flavor = it.name) {
             buildConfigField(STRING, "apiUrl", it.restApiUrl)
+            buildConfigField(STRING, "apiKey", ProductFlavors.DEFAULT.apiKey)
             buildConfigField(STRING, "ktorUserAgentVersion", libs.versions.ktor.get())
         }
     }
